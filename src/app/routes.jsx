@@ -5,6 +5,7 @@ import { authRoles } from './auth/authRoles';
 import Loadable from './components/Loadable';
 import MatxLayout from './components/MatxLayout/MatxLayout';
 import materialRoutes from 'app/views/material-kit/MaterialRoutes';
+import ControlEntregas from './views/empaque/ControlEmpaques';
 
 // session pages
 const NotFound = Loadable(lazy(() => import('app/views/sessions/NotFound')));
@@ -17,6 +18,7 @@ const AppEchart = Loadable(lazy(() => import('app/views/charts/echarts/AppEchart
 
 // dashboard page
 const Analytics = Loadable(lazy(() => import('app/views/dashboard/Analytics')));
+const Dashboard = Loadable(lazy(() => import('app/views/dashboard/Dashboard')));
 
 const routes = [
   {
@@ -31,6 +33,16 @@ const routes = [
       {
         path: '/dashboard/default',
         element: <Analytics />,
+        auth: authRoles.admin
+      },
+      {
+        path: '/dashboard/pruebas',
+        element: <Dashboard />,
+        auth: authRoles.admin
+      },
+      {
+        path: '/dashboard/control_entregas',
+        element: <ControlEntregas />,
         auth: authRoles.admin
       },
 
